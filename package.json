@@ -1,0 +1,29 @@
+{
+  "name": "mock-extended-demo",
+  "version": "1.0.0",
+  "description": "vitest-mock-extended example",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "mock-extended-demo"
+  },
+  "keywords": [
+    "test",
+    "mock",
+    "builder"
+  ],
+  "author": "Alberto Gualis",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint": "^8.30.0",
+    "vitest": "^0.26.0",
+    "vitest-mock-extended": "^1.0.7"
+  }
+}
