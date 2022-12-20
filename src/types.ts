@@ -1,110 +1,92 @@
-export interface Pool {
+export interface TimeMachine {
   id: string;
   name: string;
   address: string;
-  chainId: number;
-  poolType: PoolType;
-  poolTypeVersion: number;
-  swapFee: string;
-  protocolYieldFeeCache: string;
+  modelId: number;
+  timeTravelType: TimeTravelType;
+  timeTravelVersion: number;
+  fluxCapacitorFee: string;
+  temporalDisplacementFeeCache: string;
   owner?: string;
   factory?: string;
-  tokens: PoolToken[];
-  tokensList: string[];
-  tokenAddresses?: string[];
-  totalLiquidity: string;
-  totalShares: string;
-  totalSwapFee?: string;
-  totalSwapVolume?: string;
-  onchain?: OnchainPoolData;
+  destinations: TimeMachineDestination[];
+  destinationsList: string[];
+  destinationAddresses?: string[];
+  totalPower: string;
+  totalBoost: string;
+  totalFluxCapacitorFee?: string;
+  totalTimeTravelVolume?: string;
+  onchain?: OnchainTimeMachineData;
   createTime?: number;
-  mainTokens?: string[];
-  wrappedTokens?: string[];
-  unwrappedTokens?: string[];
+  mainDestinations?: string[];
+  alternateDestinations?: string[];
+  nonExistentDestinations?: string[];
   isNew?: boolean;
-  volumeSnapshot?: string;
+  energySnapshot?: string;
   feesSnapshot?: string;
-  boost?: string;
-  symbol?: string;
-  swapEnabled: boolean;
-  amp?: string;
-  wrappedIndex?: number;
+  thrust?: string;
+  model?: string;
+  timeTravelEnabled: boolean;
+  temporalDisplacement?: string;
+  alternateIndex?: number;
   mainIndex?: number;
-  apr?: AprBreakdown;
-  liquidity?: string;
-  totalWeight: string;
+  efficiency?: EfficiencyBreakdown;
+  power?: string;
+  maxSpeed: string;
   lowerTarget: string;
   upperTarget: string;
-  priceRateProviders?: PriceRateProvider[];
-  userBalance: number;
+  temporalRateProviders?: TemporalRateProvider[];
+  userSpeed: number;
 }
 
-interface OnchainPoolData {
-  tokens: Record<Address, OnchainTokenData>;
-  totalSupply: string;
-  decimals: number;
-  swapFee: string;
-  amp?: string;
-  swapEnabled: boolean;
-  tokenRates?: string[];
+interface OnchainTimeMachineData {
+  destinations: Record<TimeMachineDestination, OnchainDestinationData>;
+  totalPower: string;
+  fluxCapacitorFee: string;
+  temporalDisplacement?: string;
+  timeTravelEnabled: boolean;
+  temporalRate?: string[];
 }
 
-}
-interface OnchainTokenData {
-    balance: string;
-    weight: number;
-    decimals: number;
-    logoURI: string | undefined;
-    name: string;
-    symbol: string;
+interface OnchainDestinationData {
+  boost: string;
+  speed: number;
+  model: string;
+  name: string;
+  symbol: string;
 }
 
-type Address = string;
+type TimeMachineDestination = string;
 
-declare enum PoolType {
-  Weighted = "Weighted",
-  Investment = "Investment",
-  Stable = "Stable",
-  HighAmpComposableStable = "HighAmpComposableStable",
-  ComposableStable = "ComposableStable",
-  MetaStable = "MetaStable",
-  StablePhantom = "StablePhantom",
-  LiquidityBootstrapping = "LiquidityBootstrapping",
-  AaveLinear = "AaveLinear",
-  Linear = "Linear",
-  ERC4626Linear = "ERC4626Linear",
-  Element = "Element",
-  Gyro2 = "Gyro2",
-  Gyro3 = "Gyro3",
-  Managed = "Managed"
+declare enum TimeTravelType {
+  Stable = 'Stable',
+  HighComposableStable = 'HighComposableStable',
+  MetaLSD = 'MetaLSD',
+  StablePhantom = 'StablePhantom',
+  GravityFlow = 'GravityFlow',
+  Nuclear = 'Nuclear',
+  Linear = 'Linear',
+  Orbital = 'Orbital',
+  Gyro3 = 'Gyro3',
+  Managed = 'Managed',
 }
 
-interface PriceRateProvider {
+interface TemporalRateProvider {
   address: string;
-  token: {
-      address: string;
+  flow: {
+    address: string;
   };
 }
 
-interface AprBreakdown {
-  swapFees: number;
-  tokenAprs: {
-      total: number;
-      breakdown: {
-          [address: string]: number;
-      };
+interface EfficiencyBreakdown {
+  fluxRate: number;
+  flux: {
+    total: number;
+    breakdown: {
+      [address: string]: number;
+    };
   };
-  stakingApr: {
-      min: number;
-      max: number;
-  };
-  rewardAprs: {
-      total: number;
-      breakdown: {
-          [address: string]: number;
-      };
-  };
-  protocolApr: number;
+  protocolBeta: number;
   min: number;
   max: number;
 }
