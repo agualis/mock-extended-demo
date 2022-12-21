@@ -39,7 +39,7 @@ export interface TimeMachine {
   userSpeed: number;
 }
 
-interface OnchainTimeMachineData {
+export interface OnchainTimeMachineData {
   destinations: Record<TimeMachineDestination, OnchainDestinationData>;
   totalPower: string;
   fluxCapacitorFee: string;
@@ -48,7 +48,7 @@ interface OnchainTimeMachineData {
   temporalRate?: string[];
 }
 
-interface OnchainDestinationData {
+export interface OnchainDestinationData {
   boost: string;
   speed: number;
   model: string;
@@ -56,9 +56,9 @@ interface OnchainDestinationData {
   symbol: string;
 }
 
-type TimeMachineDestination = string;
+export type TimeMachineDestination = string;
 
-declare enum TimeTravelType {
+export declare enum TimeTravelType {
   Stable = 'Stable',
   HighComposableStable = 'HighComposableStable',
   MetaLSD = 'MetaLSD',
@@ -71,14 +71,14 @@ declare enum TimeTravelType {
   Managed = 'Managed',
 }
 
-interface TemporalRateProvider {
+export interface TemporalRateProvider {
   address: string;
   flow: {
     address: string;
   };
 }
 
-interface EfficiencyBreakdown {
+export interface EfficiencyBreakdown {
   fluxRate: number;
   flux: {
     total: number;
@@ -91,7 +91,7 @@ interface EfficiencyBreakdown {
   max: number;
 }
 
-interface PoolToken {
+export interface PoolToken {
   balance: string;
   priceRate?: string;
   weight?: string | null;
